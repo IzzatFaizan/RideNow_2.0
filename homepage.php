@@ -30,8 +30,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#page-top" class="page-scroll">Home</a></li>
-        <li><a href="#" class="page-scroll">Login</a></li>
+        <li><a href="#page-top" class="page-scroll" style="font-size: 15px ;">Home</a></li>
+        <li><a href="#" class="page-scroll" style="font-size: 15px ;">Login</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 

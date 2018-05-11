@@ -31,11 +31,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="index.php" class="page-scroll">Home</a></li>
-        <li><a href="index.php" class="page-scroll">About</a></li>
-        <li><a href="index.php" class="page-scroll">Register</a></li>
-        <li><a href="index.php" class="page-scroll">Contact</a></li>
-        <li><a href="#" class="page-scroll fa fa-car"> Login</a></li>
+        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
+        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">About</a></li>
+        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Register</a></li>
+        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Contact</a></li>
+        <li><a href="#" class="page-scroll fa fa-car" style="font-size: 15px ;"> Login</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
