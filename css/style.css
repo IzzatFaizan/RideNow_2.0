@@ -142,6 +142,25 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 }
 
 
+.btn1 {
+	color: #25BAD0;
+	background-color: transparent;
+	border: 2px solid #25BAD0;
+	padding: 9px 30px;
+	margin: 0;
+	font-size: 15px;
+	border-radius: 0;
+	text-transform: uppercase;
+}
+.btn1:hover, .btn1:focus, .btn1.focus, .btn1:active, .btn1.active {
+	color: #053740;
+	background-color: #25BAD0;
+	border-color: #25BAD0;
+}
+
+
+
+
 /* Home Section */
 .intro {
 	display: table;
@@ -187,6 +206,12 @@ header .intro-text {
 	padding-top: 150px;
 	padding-bottom: 150px;
 }
+
+
+
+
+
+
 /* Services Section */
 #services {
 	padding: 120px 0;
@@ -515,3 +540,5 @@ header .intro-text {
 	margin-bottom: 20px;
 }
 }
+
+
