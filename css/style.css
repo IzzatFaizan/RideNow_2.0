@@ -117,7 +117,8 @@ ul, ol {
 }
 .btn-default {
 	color: #25BAD0;
-	background-color: transparent;
+	font-weight: bold;
+	background-color:transparent;
 	border: 2px solid #25BAD0;
 	padding: 12px 20px;
 	margin: 0;
