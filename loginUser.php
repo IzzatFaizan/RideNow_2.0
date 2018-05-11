@@ -35,7 +35,7 @@
         <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">About</a></li>
         <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Register</a></li>
         <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Contact</a></li>
-        <li><a href="#" class="page-scroll fa fa-car" style="font-size: 15px ;"> Login</a></li>
+        <li><a href="login.php" class="page-scroll fa fa-car" style="font-size: 15px ;"> Login</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 

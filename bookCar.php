@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="homepage.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
-        <li><a href="#" class="page-scroll" style="font-size: 15px ;">Login</a></li>
+        <li><a href="login.php" class="page-scroll" style="font-size: 15px ;">Login</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
