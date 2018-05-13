@@ -1,3 +1,14 @@
+<?php
+
+include 'db_connection.php';
+
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,8 +63,8 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor apibus lornare diam commodo nibh.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate>
-          <div class="row">
+        <form name="sentMessage" id="contactForm" novalidate action="signup.php" method="post" onsubmit="return validation()">
+          <div class="row">    
               <div class="form-group">
                 <input type="text" name="username" class="form-control" placeholder=" Enter Username" required="">
                 <p class="help-block text-danger"></p>
@@ -71,11 +82,11 @@
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input type="text" name="contact" class="form-control" placeholder="Enter Emergency Contact Number" required="">
+                <input type="text" name="emerPhone" class="form-control" placeholder="Enter Emergency Contact Number" required="">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input type="text" name="contactName" class="form-control" placeholder="Enter Emergency Contact Name" required="">
+                <input type="text" name="emerName" class="form-control" placeholder="Enter Emergency Contact Name" required="">
                 <p class="help-block text-danger"></p>
               </div>
           </div>
@@ -94,6 +105,65 @@
     </div>
   </div>
 </div>
+<script>
+function validation(){
+  var username = $("#username").val();
+  var phone = $("#phone").val();
+  var phonelabel = document.getElementById("duplabelphone").textContent;
+  var label = "Phone number is valid";
+  var email = $("#email").val();
+  var password = $("#password").val();
+  var emerPhone = $("#emerPhone").val();
+  var emerName = $("#emerName").val();
+
+  if (username == '' || phone == '' || email == '' || password == '' || emerPhone == '' || emerName == '') {
+        alert("Please fill in all the fields");
+        return false;
+        
+        } else if (!(phonelabel==label)) {
+        alert("Phone number has been used");
+        return false;
+        } else if ((password.length) < 6) {
+        alert("Password should at least 6 character in length");
+        return false;
+        } 
+
+
+}
+</script>
+
+
+  <script>
+function checkdupphone() {
+    var phone = $("#phone").val();
+  $.ajax({
+        type: 'POST',
+        url: "ajax/checkdupphone.php",
+        data: { phone: phone},
+
+        error: function(data) {
+
+            alert(" Can't do because: " + data);
+        },
+        success: function(data) {
+      if(data == "false"){
+      if((phone.length)<9){
+      document.getElementById("duplabelphone").style.color = "red";
+      document.getElementById("duplabelphone").innerHTML = "Phone number must be more than 9 digits";
+      }
+      else {
+      document.getElementById("duplabelphone").style.color = "green";
+      document.getElementById("duplabelphone").innerHTML = "Phone number is valid";}
+      }
+      else if(data == "true"){
+      document.getElementById("duplabelphone").style.color = "red";
+      document.getElementById("duplabelphone").innerHTML = "Phone number is invalid";}
+      
+        }
+  });
+  
+}
+</script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/SmoothScroll.js"></script> 
