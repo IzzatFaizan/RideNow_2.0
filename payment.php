@@ -1,3 +1,25 @@
+<?php
+
+include 'db_connection.php';
+
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+ // echo "Your session is running " . $_SESSION['loginUser'];
+  }
+
+$phone = $_SESSION['loginUser'];
+$get_paymentMethod = "select paymentMethod from user where phone = '$phone'";
+
+    $run_getMethod = mysqli_query($conn,$get_paymentMethod);
+    
+  $result = mysqli_fetch_array($run_getMethod);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,21 +81,31 @@
         <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" action="paymentMethod.php" method="post">
           <div class="row">
               <div class="form-group">
-                <select class="form-control" required="">
-                  <option value="cash"  name="paymentMethod" id="cash"> Cash</option>
-                  <option value="card"  name="paymentMethod" id="card"> Credit Card</option>
-                    <div class="reveal-if-active">
-                      <input type="text" name="cardNo" id="cardNo" class="form-control" placeholder="Card Number">
-                      <input type="text" name="cvv" id="cvv" class="form-control" placeholder="CVV">
-                      <input type="month" name="exp" id="exp" class="form-control" placeholder="Expired Date">
-                    </div>
-                </select>
-                <p class="help-block text-danger"></p> 
+                
+                <input type="radio" style="float: left" name="paymentmethod" id="cash" value="cash" required="" <?php echo ($result['paymentMethod']=='cash')?'checked':'' ?>><span style="font-size: 16px;color:white;float:left;padding-left: 10px"> Cash</span>
               </div>
-              <input type="submit" name="userLogin" class="btn btn-default" value="Save Payment Detail">
+              <br>
+              <div class="form-group">
+                
+                <input type="radio" style="float: left" name="paymentmethod" id="card" value="card" <?php echo ($result['paymentMethod']=='card')?'checked':'' ?>><span style="font-size: 16px;color:white;float:left;padding-left: 10px"> Credit/Debit Card</span>
+
+              </div>
+                      
+                <p class="help-block text-danger"></p> 
+                <div class="reveal-if-active">
+            <br>
+           <input type="text" class="form-control" name="cardnum" id="cardnum" placeholder="Card Number" required>      
+           <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" required>
+           <label for="cash">Expiry Date</label>
+            <input type="month" class="form-control" name="exp" id="exp" required>
+          </div>
+              </div>
+
+             
+              <input type="submit" name="payment" class="btn btn-default" value="Save Payment Detail">
         </form>
       </div>
     </div>
@@ -89,18 +121,11 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
 
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
 <script>
-$(document).ready(function () {
-            $('option[name=paymentMethod]').change(function () {
+ $(document).ready(function () {
+            $('input[type=radio][name=paymentmethod]').change(function () {
                 if (this.value == 'cash') {        
                     $('.reveal-if-active').hide();
                 }
