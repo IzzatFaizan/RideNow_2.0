@@ -28,7 +28,7 @@ if ($conn->multi_query($sql) === TRUE) {
 	
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-	echo"<script> alert('This phone number has been used')</script>";
+//	echo"<script> alert('This phone number has been used')</script>";
 	echo '<script>history.back();</script>';
 	
 }
