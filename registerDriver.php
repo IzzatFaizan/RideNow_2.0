@@ -52,7 +52,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor apibus lornare diam commodo nibh.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" action="signup.php" method="post">
+        <form name="sentMessage" id="contactForm" action="signup.php" method="post" onsubmit="return validation()">
           <div class="row">
               <div class="form-group">
                 <input type="text" name="drivername" class="form-control" placeholder=" Enter Driver Name" required>
@@ -85,6 +85,32 @@
     </div>
   </div>
 </div>
+
+<script>
+function validation(){
+  var drivername = $("#drivername").val();
+  var driverphone = $("#driverphone").val();
+  var phonelabel = document.getElementById("duplabelphone").textContent;
+  var label = "Phone number is valid";
+  var password = $("#password").val();
+
+
+  if (drivername == '' || driverphone == '' || password == '') {
+        alert("Please fill in all the fields");
+        return false;
+        
+        } else if (!(phonelabel==label)) {
+        alert("Phone number has been used");
+        return false;
+        } else if ((password.length) < 6) {
+        alert("Password should at least 6 character in length");
+        return false;
+        } 
+
+
+}
+</script>
+
   <script>
 function checkdupdriverphone() {
     var driverphone = $("#driverphone").val();
@@ -116,7 +142,6 @@ function checkdupdriverphone() {
 }
 </script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
+
 </body>
 </html>
