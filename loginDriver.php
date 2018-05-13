@@ -1,3 +1,8 @@
+
+<?php
+  include "verifyLogin.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,10 +58,10 @@
         <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" action="verifyLogin.php" method="post">
           <div class="row">
               <div class="form-group">
-                <input type="text" name="phone" id="phone" oninput="checkdupphone()" class="form-control" placeholder="Enter Phone Number" required="">
+                <input type="text" name="driverphone" id="driverphone" class="form-control" placeholder="Enter Phone Number" required="">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
@@ -65,7 +70,7 @@
               </div>
           </div>
           <div id="success"></div>
-          <input type="submit" name="userLogin" class="btn btn-default" value="Login">
+          <input type="submit" name="driverLogin" class="btn btn-default" value="Login">
         </form>
       </div>
     </div>
@@ -81,13 +86,6 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
+
 </body>
 </html>

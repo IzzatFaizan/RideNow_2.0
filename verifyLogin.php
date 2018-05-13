@@ -25,7 +25,7 @@
 			}
 		}
 	}
-	else if(isset($_POST['driversubmit'])) {
+	else if(isset($_POST['driverLogin'])) {
 		
 		if(count($_POST) > 0) {
 			$result = mysqli_query($conn,"SELECT driverphone, password FROM driver WHERE driverphone='" . $_POST["driverphone"] . "' and password = '". $_POST["password"]."'");
@@ -39,7 +39,7 @@
 				session_start();
 				$_SESSION['loginUser']= $_POST["driverphone"];
 				
-				header ("Location: http://localhost/ridenow/acceptRider.php");
+				header ("Location: http://localhost/RideNow_2.0/acceptRider.php");
 				
 		
 			}
