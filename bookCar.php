@@ -1,3 +1,16 @@
+<?php
+include 'db_connection.php';
+
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+ // echo "Your session is running " . $_SESSION['loginUser'];
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,20 +60,20 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor apibus lornare diam commodo nibh.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" novalidate action="verifyLocation.php" method="post">
           <div class="row">
               <div class="form-group">
-                <input type="text" name="location" id="us2-address" class="form-control" placeholder="Current Location" required="">
+                <input type="text" name="current" id="current" class="form-control" placeholder="Enter Current Location" required="">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input type="text" name="location" id="us2-address" class="form-control" placeholder="Enter Destination" required="">
+                <input type="text" name="destination" id="destination" class="form-control" placeholder="Enter Destination" required="">
                 <p class="help-block text-danger"></p>
               </div>
           </div>
           
           <div id="success"></div>
-          <input type="submit" name="driverRegister" class="btn btn-default" value="Search Available Platform">
+          <input type="submit" name="search" class="btn btn-default" value="Search Available Platform">
         </form>
       </div>
     </div>
@@ -75,14 +88,6 @@
   </div>
 </div>
 
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>
