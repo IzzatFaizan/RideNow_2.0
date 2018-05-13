@@ -63,7 +63,7 @@ $conn = OpenCon();
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor apibus lornare diam commodo nibh.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate action="signup.php" method="post" onsubmit="return validation()">
+        <form name="sentMessage" id="contactForm" action="signup.php" method="post" onsubmit="return validation()">
           <div class="row">    
               <div class="form-group">
                 <input type="text" name="username" class="form-control" placeholder=" Enter Username" required="">

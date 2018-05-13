@@ -52,18 +52,19 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor apibus lornare diam commodo nibh.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" action="signup.php" method="post">
           <div class="row">
               <div class="form-group">
-                <input type="text" name="drivername" class="form-control" placeholder=" Enter Driver Name" required="">
+                <input type="text" name="drivername" class="form-control" placeholder=" Enter Driver Name" required>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input type="text" name="driverphone" id="driverphone" oninput="checkdupdriverphone()" class="form-control" placeholder="Enter Phone Number" required="">
+                <input type="text" name="driverphone" id="driverphone" oninput="checkdupdriverphone()" class="form-control" placeholder="Enter Phone Number" required>
+                <small ><p id="duplabelphone"></p></small>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Enter Password" required="" >
+                <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
                 <p class="help-block text-danger"></p>
               </div>
           </div>
@@ -84,13 +85,38 @@
     </div>
   </div>
 </div>
+  <script>
+function checkdupdriverphone() {
+    var driverphone = $("#driverphone").val();
+  $.ajax({
+        type: 'POST',
+        url: "ajax/checkdupdriverphone.php",
+        data: { driverphone: driverphone},
+
+        error: function(data) {
+
+            alert(" Can't do because: " + data);
+        },
+        success: function(data) {
+      if(data == "false"){
+      if((driverphone.length)<9){
+      document.getElementById("duplabelphone").style.color = "red";
+      document.getElementById("duplabelphone").innerHTML = "Phone number must be more than 9 digits";
+      }
+      else {document.getElementById("duplabelphone").style.color = "green";
+      document.getElementById("duplabelphone").innerHTML = "Phone number is valid";}
+      }
+      else if(data == "true"){
+      document.getElementById("duplabelphone").style.color = "red";
+      document.getElementById("duplabelphone").innerHTML = "Phone number is invalid";}
+      
+        }
+  });
+  
+}
+</script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
