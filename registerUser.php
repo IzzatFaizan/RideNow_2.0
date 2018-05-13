@@ -71,6 +71,7 @@ $conn = OpenCon();
               </div>
               <div class="form-group">
                 <input type="text" name="phone" id="phone" oninput="checkdupphone()" class="form-control" placeholder="Enter Phone Number" required="">
+                <small ><p id="duplabelphone"></p></small>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
