@@ -106,6 +106,7 @@ $conn = OpenCon();
     </div>
   </div>
 </div>
+
 <script>
 function validation(){
   var username = $("#username").val();
