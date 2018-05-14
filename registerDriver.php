@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RideNow</title>
+<title>RideNow | Registration</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -49,7 +49,7 @@
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>Driver Registration</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor apibus lornare diam commodo nibh.</p>
+        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
         <form name="sentMessage" id="contactForm" action="signup.php" method="post" onsubmit="return validation()">
@@ -81,7 +81,7 @@
 <div id="footer">
   <div class="container text-center">
     <div class="fnav">
-      <p>Copyright &copy; 2018 RideNow. Designed by<a href="http://www.templatewire.com" rel="nofollow"> EcomTeam</a></p>
+      <p>Copyright &copy; 2018 RideNow. Designed by<a href="" rel="nofollow"> EcomTeam</a></p>
     </div>
   </div>
 </div>
