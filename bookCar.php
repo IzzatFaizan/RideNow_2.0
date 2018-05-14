@@ -16,7 +16,7 @@ if(isset($_SESSION['loginUser'])) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RideNow</title>
+<title>RideNow | Book Car</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -57,7 +57,7 @@ if(isset($_SESSION['loginUser'])) {
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>Choose Your Destination</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor apibus lornare diam commodo nibh.</p>
+        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
         <form name="sentMessage" id="contactForm" novalidate action="verifyLocation.php" method="post">
