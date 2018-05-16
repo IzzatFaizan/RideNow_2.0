@@ -57,10 +57,10 @@ if(isset($_SESSION['loginUser'])) {
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>Choose Your Destination</h2>
-        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
+        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate action="verifyLocation.php" method="post">
+        <form name="sentMessage" id="contactForm" novalidate action="availablePlatform.php" method="post">
           <div class="row">
               <div class="form-group">
                 <input type="text" name="current" id="current" class="form-control" placeholder="Enter Current Location" required="">

@@ -1,6 +1,16 @@
-
 <?php
-  include "verifyLogin.php";
+
+include 'db_connection.php';
+
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+ // echo "Your session is running " . $_SESSION['loginUser'];
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +65,7 @@
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>Available Platform</h2>
-        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
+        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <table class="table">
       <thead>
@@ -68,48 +78,34 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>RideNow</td>
-          <td>K6 UPM</td>
-          <td>KTM Serdang</td>
-          <td>01:32:50</td>
-          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-        </tr>
-        <tr>
-          <td>GrabCar</td>
-          <td>K6 UPM</td>
-          <td>KTM Serdang</td>
-          <td>00:51:22</td>
-          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-        </tr>
-        <tr>
-          <td>Uber</td>
-          <td>K6 UPM</td>
-          <td>KTM Serdang</td>
-          <td>00:24:34</td>
-          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-        </tr>
-        <tr>
-          <td>MyCar</td>
-          <td>K6 UPM</td>
-          <td>KTM Serdang</td>
-          <td>00:12:10</td>
-          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-        </tr>
-        <tr>
-          <td>MyTeksi</td>
-          <td>K6 UPM</td>
-          <td>KTM Serdang</td>
-          <td>00:46:19</td>
-          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-        </tr>
-        <tr>
-          <td>Student Cab</td>
-          <td>K6 UPM</td>
-          <td>KTM Serdang</td>
-          <td>00:31:52</td>
-          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-        </tr>  
+     
+         <?php
+
+
+if( isset($_POST["search"]) ){
+		
+		$current = $_POST["current"];
+		$destination = $_POST["destination"];
+		
+ $sqlgetloc = "select * from platform where current='$current' AND destination = '$destination';";
+    $run_getloc= mysqli_query($conn,$sqlgetloc);
+
+
+   while( $row = mysqli_fetch_array($run_getloc)) {
+		
+      echo "<tr>";
+      echo "<td>".$row['platformName']."</td>";
+      echo "<td>".$row['current']."</td>";
+      echo "<td>".$row['destination']."</td>";
+      echo "<td>".$row['price']."</td>";
+      echo "<td><a class='bookBtn' href=\"booking.php?platformID=$row[platformID]\">Book</a></td>";
+      echo "</tr>";
+}
+}
+$conn->close();
+?>
+       
+     
       </tbody>
     </table>
       </div>
