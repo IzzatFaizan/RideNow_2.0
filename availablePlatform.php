@@ -54,24 +54,70 @@
   <div class="overlay">
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
-        <h2>Driver Login</h2>
+        <h2>Available Platform</h2>
         <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
       </div>
+
+      <table class="table">
+  <thead>
+    <tr>
+      <th><h1>PLATFORM NAME</h1></th>
+      <th><h1>CURRENT LOCATION</h1></th>
+      <th><h1>DESTINATION</h1></th>
+      <th><h1>PRICE (RM)</h1></th>
+      <th><h1>BOOK NOW</h1></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Google</td>
+      <td>9518</td>
+      <td>6369</td>
+      <td>01:32:50</td>
+      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+    </tr>
+    <tr>
+      <td>Twitter</td>
+      <td>7326</td>
+      <td>10437</td>
+      <td>00:51:22</td>
+      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+    </tr>
+    <tr>
+      <td>Amazon</td>
+      <td>4162</td>
+      <td>5327</td>
+      <td>00:24:34</td>
+      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+    </tr>
+    <tr>
+      <td>LinkedIn</td>
+      <td>3654</td>
+      <td>2961</td>
+      <td>00:12:10</td>
+      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+    </tr>
+    <tr>
+      <td>CodePen</td>
+      <td>2002</td>
+      <td>4135</td>
+      <td>00:46:19</td>
+      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+    </tr>
+    <tr>
+      <td>GitHub</td>
+      <td>4623</td>
+      <td>3486</td>
+      <td>00:31:52</td>
+      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+    </tr>
+    
+  </tbody>
+</table>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" action="verifyLogin.php" method="post">
-          <div class="row">
-              <div class="form-group">
-                <input type="text" name="driverphone" id="driverphone" class="form-control" placeholder="Enter Phone Number" required="">
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Enter Password" required="" >
-                <p class="help-block text-danger"></p>
-              </div>
-          </div>
-          <div id="success"></div>
-          <input type="submit" name="driverLogin" class="btn btn-default" value="Login">
-        </form>
+        <div id="success"></div>
+        <input type="submit" name="driverLogin" class="btn btn-default" value="Login">
+      </div>
       </div>
     </div>
   </div>

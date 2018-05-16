@@ -69,6 +69,12 @@ ul, ol {
 	webkit-padding: 0;
 	moz-padding: 0;
 }
+
+
+
+
+
+
 /* Navigation */
 #menu {
 	padding: 20px;
@@ -115,6 +121,22 @@ ul, ol {
 .navbar-default .navbar-toggle:hover>.icon-bar {
 	background-color: #FFF;
 }
+
+.bookBtn{
+	color: #25BAD0;
+	font-weight: bold;
+	background-color:transparent;
+	border: 2px solid #25BAD0;
+	padding: 1px 25px;
+	
+}
+
+.bookBtn:hover, .bookBtn:focus, .bookBtn.focus, .bookBtn:active, .bookBtn.active {
+	color: #053740;
+	background-color: #25BAD0;
+	border-color: #25BAD0;
+}
+
 .btn-default {
 	color: #25BAD0;
 	font-weight: bold;
@@ -513,6 +535,68 @@ color: #ccc;
 #contact .social i.fa:hover {
 	color: #25BAD0;
 }
+
+
+.table th h1 {
+	font-weight: bold;
+	font-size: 18px;
+  	text-align: left;
+  	color: #fff;
+}
+
+.table td {
+	font-weight: normal;
+	font-size: 1em;
+  	-webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	-moz-box-shadow: 0 2px 2px -2px #0E1119;
+	box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.table {
+	text-align: left;
+	overflow: hidden;
+	width: 80%;
+	margin: 0 auto;
+  	display: table;
+  	padding: 0 0 8em 0;
+}
+
+.table td, .table th {
+	padding-bottom: 2%;
+	padding-top: 2%;
+  	padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.table tr:nth-child(odd) {
+	background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.table tr:nth-child(even) {
+	background-color: #2C3446;
+}
+
+.table th {
+	background-color: #1F2739;
+}
+
+.table td:first-child { color: #FB667A; }
+
+.table tr:hover {
+   	background-color: #464A52;
+	-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	-moz-box-shadow: 0 6px 6px -6px #0E1119;
+	box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+
+@media (max-width: 800px) {
+.table td:nth-child(4),
+.table th:nth-child(4) { display: none; }
+}
+
+
 /* Footer Section*/
 #footer {
 	background: #03252b;
