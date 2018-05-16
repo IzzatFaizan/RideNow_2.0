@@ -57,63 +57,61 @@
         <h2>Available Platform</h2>
         <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
       </div>
-
       <table class="table">
-  <thead>
-    <tr>
-      <th><h1>PLATFORM NAME</h1></th>
-      <th><h1>CURRENT LOCATION</h1></th>
-      <th><h1>DESTINATION</h1></th>
-      <th><h1>PRICE (RM)</h1></th>
-      <th><h1>BOOK NOW</h1></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>RideNow</td>
-      <td>K6 UPM</td>
-      <td>KTM Serdang</td>
-      <td>01:32:50</td>
-      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-    </tr>
-    <tr>
-      <td>GrabCar</td>
-      <td>K6 UPM</td>
-      <td>KTM Serdang</td>
-      <td>00:51:22</td>
-      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-    </tr>
-    <tr>
-      <td>Uber</td>
-      <td>K6 UPM</td>
-      <td>KTM Serdang</td>
-      <td>00:24:34</td>
-      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-    </tr>
-    <tr>
-      <td>MyCar</td>
-      <td>K6 UPM</td>
-      <td>KTM Serdang</td>
-      <td>00:12:10</td>
-      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-    </tr>
-    <tr>
-      <td>MyTeksi</td>
-      <td>K6 UPM</td>
-      <td>KTM Serdang</td>
-      <td>00:46:19</td>
-      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-    </tr>
-    <tr>
-      <td>Student Cab</td>
-      <td>K6 UPM</td>
-      <td>KTM Serdang</td>
-      <td>00:31:52</td>
-      <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
-    </tr>
-    
-  </tbody>
-</table>
+      <thead>
+        <tr>
+          <th><h1>PLATFORM NAME</h1></th>
+          <th><h1>CURRENT LOCATION</h1></th>
+          <th><h1>DESTINATION</h1></th>
+          <th><h1>PRICE (RM)</h1></th>
+          <th><h1>BOOK NOW</h1></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RideNow</td>
+          <td>K6 UPM</td>
+          <td>KTM Serdang</td>
+          <td>01:32:50</td>
+          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+        </tr>
+        <tr>
+          <td>GrabCar</td>
+          <td>K6 UPM</td>
+          <td>KTM Serdang</td>
+          <td>00:51:22</td>
+          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+        </tr>
+        <tr>
+          <td>Uber</td>
+          <td>K6 UPM</td>
+          <td>KTM Serdang</td>
+          <td>00:24:34</td>
+          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+        </tr>
+        <tr>
+          <td>MyCar</td>
+          <td>K6 UPM</td>
+          <td>KTM Serdang</td>
+          <td>00:12:10</td>
+          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+        </tr>
+        <tr>
+          <td>MyTeksi</td>
+          <td>K6 UPM</td>
+          <td>KTM Serdang</td>
+          <td>00:46:19</td>
+          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+        </tr>
+        <tr>
+          <td>Student Cab</td>
+          <td>K6 UPM</td>
+          <td>KTM Serdang</td>
+          <td>00:31:52</td>
+          <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
+        </tr>  
+      </tbody>
+    </table>
       </div>
     </div>
   </div>
