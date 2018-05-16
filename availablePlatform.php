@@ -70,54 +70,50 @@
   </thead>
   <tbody>
     <tr>
-      <td>Google</td>
-      <td>9518</td>
-      <td>6369</td>
+      <td>RideNow</td>
+      <td>K6 UPM</td>
+      <td>KTM Serdang</td>
       <td>01:32:50</td>
       <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
     </tr>
     <tr>
-      <td>Twitter</td>
-      <td>7326</td>
-      <td>10437</td>
+      <td>GrabCar</td>
+      <td>K6 UPM</td>
+      <td>KTM Serdang</td>
       <td>00:51:22</td>
       <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
     </tr>
     <tr>
-      <td>Amazon</td>
-      <td>4162</td>
-      <td>5327</td>
+      <td>Uber</td>
+      <td>K6 UPM</td>
+      <td>KTM Serdang</td>
       <td>00:24:34</td>
       <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
     </tr>
     <tr>
-      <td>LinkedIn</td>
-      <td>3654</td>
-      <td>2961</td>
+      <td>MyCar</td>
+      <td>K6 UPM</td>
+      <td>KTM Serdang</td>
       <td>00:12:10</td>
       <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
     </tr>
     <tr>
-      <td>CodePen</td>
-      <td>2002</td>
-      <td>4135</td>
+      <td>MyTeksi</td>
+      <td>K6 UPM</td>
+      <td>KTM Serdang</td>
       <td>00:46:19</td>
       <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
     </tr>
     <tr>
-      <td>GitHub</td>
-      <td>4623</td>
-      <td>3486</td>
+      <td>Student Cab</td>
+      <td>K6 UPM</td>
+      <td>KTM Serdang</td>
       <td>00:31:52</td>
       <td><input type="submit" name="bookCar" class="bookBtn" value="Book Now"></td>
     </tr>
     
   </tbody>
 </table>
-      <div class="col-md-8 col-md-offset-2">
-        <div id="success"></div>
-        <input type="submit" name="driverLogin" class="btn btn-default" value="Login">
-      </div>
       </div>
     </div>
   </div>
