@@ -1,4 +1,41 @@
+<?php
+include 'db_connection.php';
+$conn = OpenCon();
 
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $mconn->connect_error);
+}
+
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+//  echo "Your session is running " . $_SESSION['loginUser'];
+  }
+
+
+//getting id from url
+$platformID = $_GET['platformID'];
+ 
+//selecting data associated with this particular id
+$result = mysqli_query($conn, "SELECT * FROM platform WHERE platformID=$platformID");
+ 
+while($res = mysqli_fetch_array($result))
+{
+    $platformName = $res['platformName'];
+    $current = $res['current'];
+    $destination = $res['destination'];
+    $price = $res['price'];
+}
+
+$_SESSION['platformName']= $platformName;
+$_SESSION['current']= $current;
+$_SESSION['destination']= $destination;
+$_SESSION['price']= $price;
+
+$conn->close();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,22 +95,22 @@
           <div class="row">
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Platform Name :</label>
-                <input type="text" name="platform" id="platform" class="form-control" readonly="">
+                <input type="text" value="<?php echo $platformName; ?>" class="form-control" readonly="">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Current Location :</label>
-                <input type="text" name="location" class="form-control" readonly="" >
+                <input type="text" value="<?php echo $current; ?>" class="form-control" readonly="" >
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Destination :</label>
-                <input type="text" name="destination" class="form-control" readonly="" >
+                <input type="text" value="<?php echo $destination; ?>" class="form-control" readonly="" >
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Price :</label>
-                <input type="text" name="price" class="form-control" readonly="" >
+                <input type="text" value="<?php echo "RM".$price; ?>" class="form-control" readonly="" >
                 <p class="help-block text-danger"></p>
               </div>
           </div>

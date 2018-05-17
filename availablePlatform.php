@@ -98,7 +98,7 @@ if( isset($_POST["search"]) ){
       echo "<td>".$row['current']."</td>";
       echo "<td>".$row['destination']."</td>";
       echo "<td>".$row['price']."</td>";
-      echo "<td><a class='bookBtn' href=\"booking.php?platformID=$row[platformID]\">Book</a></td>";
+      echo "<td><a class='bookBtn' href=\"bookConfirmation.php?platformID=$row[platformID]\">Book</a></td>";
       echo "</tr>";
 }
 }
