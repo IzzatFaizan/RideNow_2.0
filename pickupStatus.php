@@ -18,7 +18,7 @@ $phone = $_SESSION['loginUser'];
   	$pickupStatus = $res['pickupStatus'];
 	
 	if(empty($pickupStatus)){
-		header("Location: http://localhost/RideNow_2.0/ride.php");
+		header("Location: http://localhost/RideNow_2.0/waitDriver.php");
 	}
 	else if ($pickupStatus == 'Picked'){
 		header("Location: http://localhost/RideNow_2.0/gotDriver.php");

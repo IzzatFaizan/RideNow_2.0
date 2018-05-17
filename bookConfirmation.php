@@ -91,7 +91,7 @@ $conn->close();
         <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" action="ride.php" method="post">
+        <form name="sentMessage" id="contactForm" action="waitDriver.php" method="post">
           <div class="row">
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Platform Name :</label>
