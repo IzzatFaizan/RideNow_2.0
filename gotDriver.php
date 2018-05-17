@@ -4,12 +4,26 @@ include 'db_connection.php';
 
 $conn = OpenCon();
 
-echo "Connected Successfully";
+//echo "Connected Successfully";
 
 session_start();
 if(isset($_SESSION['loginUser'])) {
-  echo "Your session is running " . $_SESSION['loginUser'];
+ // echo "Your session is running " . $_SESSION['loginUser'];
   }
+
+    $phone = $_SESSION['loginUser'];
+    $get_info= "select booking.driverPhone, driver.driverName, car.carType, car.platNo, car.colour from booking inner join driver on booking.driverPhone = driver.driverPhone inner join car on driver.carID = car.carID where phone='$phone' order by bookingID desc limit 1";
+
+    $run_getdriver = mysqli_query($conn,$get_info);
+    
+  $res = mysqli_fetch_array($run_getdriver);
+  
+  
+    $info_driverName = $res['driverName'];
+    $info_driverPhone = $res['driverPhone'];
+    $info_carType = $res['carType'];
+    $info_platNo = $res['platNo'];
+    $info_colour = $res['colour'];
 
 ?>
 
@@ -67,37 +81,37 @@ if(isset($_SESSION['loginUser'])) {
         <p class="btn-default" style="font-size: 20px"><b>You Have Got A Driver</b></p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" novalidate action="onBoard.php" method="post">
        
           <div class="row">
               <div class="form-group">
                 <label><a style="font-size: 15px">Driver's Name :</a></label>
-                <input type="text" name="driverName" id="driverName" oninput="checkdupphone()" class="form-control" required="readonly">
+                <input type="text" value="<?php echo $info_driverName; ?>" class="form-control" readonly>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label><a style="font-size: 15px">Driver's Phone Number :</a></label>
-                <input type="text" name="driverContact" class="form-control" required readonly >
+                <input type="text" value="<?php echo $info_driverPhone; ?>" class="form-control" readonly>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label><a style="font-size: 15px">Car Type :</a></label>
-                <input type="text" name="carType" class="form-control" required readonly >
+                <input type="text" value="<?php echo $info_carType; ?>" class="form-control" readonly >
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label><a style="font-size: 15px">Car Plat Number :</a></label>
-                <input type="text" name="carPlat" class="form-control" required readonly >
+                <input type="text" value="<?php echo $info_platNo; ?>" class="form-control" readonly>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label><a style="font-size: 15px">Car Color :</a></label>
-                <input type="text" name="carColor" class="form-control" required readonly >
+                <input type="text" value="<?php echo $info_colour; ?>" class="form-control" readonly>
                 <p class="help-block text-danger"></p>
               </div>
           </div>
           <div id="success"></div>
-          <input type="submit" name="userLogin" class="btn btn-default" value="Ride Now">
+          <input type="submit" name="getdriver" class="btn btn-default" value="Ride Now">
         </form>
       </div>
     </div>
@@ -113,13 +127,6 @@ if(isset($_SESSION['loginUser'])) {
     </div>
   </div>
 </div>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
+
 </body>
 </html>
