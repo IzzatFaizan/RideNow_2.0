@@ -3,12 +3,12 @@ include 'db_connection.php';
 
 $conn = OpenCon();
 
-echo "Connected Successfully";
+//echo "Connected Successfully";
 
 
 session_start();
 if(isset($_SESSION['loginUser'])) {
-  echo "Your session is running " . $_SESSION['loginUser'];
+//  echo "Your session is running " . $_SESSION['loginUser'];
   }
 
 if( isset($_POST["confirm"]) ){
@@ -41,7 +41,7 @@ $conn->close();
 
 <html>
 <head>
-	<meta http-equiv="refresh" content="0; URL='http://localhost/ridenow/pickupStatus.php'"/> 
+	<meta http-equiv="refresh" content="0; URL='http://localhost/RideNow_2.0/pickupStatus.php'"/> 
 	</head>
 
 <body>

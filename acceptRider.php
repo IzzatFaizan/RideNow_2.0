@@ -90,12 +90,12 @@ if(isset($_SESSION['loginUser'])) {
 
    while( $row = mysqli_fetch_array($run_getloc)) {
     
-      echo "<tr height='50px'>";
+      echo "<tr>";
       echo "<td>".$row['phone']."</td>";
       echo "<td>".$row['current']."</td>";
       echo "<td>".$row['destination']."</td>";
       echo "<td>".$row['price']."</td>";
-      echo "<td width = '7%'><a class='linkEffect' href=\"acceptbooking.php?bookingID=$row[bookingID]\">Accept</a></td>";
+      echo "<td><a class='bookBtn' href=\"acceptbooking.php?bookingID=$row[bookingID]\">Accept</a></td>";
       echo "</tr>";
 }
 
