@@ -29,6 +29,108 @@ if(isset($_SESSION['loginUser'])) {
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
 
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="typeahead.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $('input.typeahead').typeahead({
+        name: 'current',
+        remote:'search.php?key=%QUERY',
+        limit : 10
+    });
+});
+</script>
+    <style type="text/css">
+.bs-example{
+    font-family: sans-serif;
+    position: relative;
+    margin: 50px;
+}
+.typeahead, .tt-query, .tt-hint {
+    border: 2px solid #CCCCCC;
+    border-radius: 8px;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+    width: 700px;
+
+}
+#contact .typeahead {
+  display: block;
+  width: 700px;
+  padding: 6px 12px;
+  margin: 0px 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #fff;
+  background-color: rgba(255,255,255,0.2);
+  background-image: none;
+  border: 0;
+  border-radius: 2px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
+  
+}
+#contact .typeahead:focus {
+  border-color: inherit;
+  outline: 0;
+  -webkit-box-shadow: transparent;
+  box-shadow: transparent;
+}
+.typeahead::-webkit-input-placeholder {
+color: #ccc;
+}
+.typeahead:-moz-placeholder {
+color: #ccc;
+}
+.typeahead::-moz-placeholder {
+color: #ccc;
+}
+.typeahead:-ms-input-placeholder {
+color: #ccc;
+}
+
+.tt-query {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+    color: #999999;
+}
+.tt-dropdown-menu {
+    background-color: #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+    padding: 8px 0;
+    width: 700px;
+    text-align: left;
+    color:#000000;
+
+}
+.tt-suggestion {
+    font-size: 24px;
+    line-height: 24px;
+    padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+    background-color: #0097CF;
+    color: #FFFFFF;
+}
+.tt-suggestion p {
+    margin: 0;
+
+
+}
+</style>
+
+
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <!-- Navigation -->
@@ -63,11 +165,11 @@ if(isset($_SESSION['loginUser'])) {
         <form name="sentMessage" id="contactForm" novalidate action="availablePlatform.php" method="post">
           <div class="row">
               <div class="form-group">
-                <input type="text" name="current" id="current" class="form-control" placeholder="Enter Current Location" required="">
+                <input type="text" name="current" id="current" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Enter Current Location" required>
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input type="text" name="destination" id="destination" class="form-control" placeholder="Enter Destination" required="">
+                <input type="text" name="destination" id="destination" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Enter Destination" required>
                 <p class="help-block text-danger"></p>
               </div>
           </div>
