@@ -79,7 +79,7 @@ $conn->close();
         <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" action="waitDriver.php" method="post">
+        <form name="sentMessage" id="contactForm" action="pickRider.php" method="post">
           <div class="row">
           <div class="cssload-thecube">
           <div class="cssload-cube cssload-c1"></div>
@@ -90,8 +90,8 @@ $conn->close();
           <br>
           <br>
           <br>
-          <input type="submit" name="confirm" class="btn btn-default" value="Pick Up"> &emsp;
-          <input type="submit" name="confirm" class="btn btn-default" value="Cancel">
+          <input type="submit" name="pickRider" class="btn btn-default" value="Pick Up"> &emsp;
+          <input type="submit" name="cancel" class="btn btn-default" value="Cancel">
         </form>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta http-equiv="refresh" content="3; URL='http://localhost/ridenow/dropoffStatus.php'"/>
+    <meta http-equiv="refresh" content="3; URL='http://localhost/RideNow_2.0/dropoffStatus.php'"/>
     <meta charset="utf-8">
     <title>Directions service</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

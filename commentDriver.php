@@ -1,3 +1,22 @@
+<?php 
+
+
+include 'db_connection.php';
+
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+//  echo "Your session is running " . $_SESSION['loginUser'];
+  }
+$phone = $_SESSION['loginUser'];
+$driverName = $_SESSION['driverName'];
+$driverPhone = $_SESSION['driverPhone'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,13 +70,13 @@
         <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" novalidate action="commentSubmit.php" method="POST">
           <div class="form-group">
-            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+            <textarea name="commentMsg" id="commentMsg" class="form-control" rows="4" placeholder="Message" required></textarea>
             <p class="help-block text-danger"></p>
           </div>
           <div id="success"></div>
-          <button type="submit" class="btn btn-default">Send Comment</button>
+          <button type="submit" name="comment" class="btn btn-default">Send Comment</button>
         </form>
       </div>
     </div>

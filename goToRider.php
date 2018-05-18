@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Directions service</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -31,73 +31,113 @@
       }
     </style>
   </head>
-  <body>
+<body>
     <div id="floating-panel">
-    <b>Start: </b>
-    <select id="start">
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-    </select>
-    <b>End: </b>
-    <select id="end">
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-    </select>
-    </div>
+    <h1>Rider is on board!</h1>
+    <table>
+        <?php
+        include 'db_connection.php';
+
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+  echo "Your session is running " . $_SESSION['loginUser'];
+  }
+$bookingID = $_SESSION['bookingID'];
+        $phone = $_SESSION['loginUser'];
+        $get_info= "SELECT user.username, booking.phone, booking.current, booking.destination FROM user INNER JOIN booking ON user.phone = booking.phone WHERE driverPhone = $phone ORDER by bookingID desc limit 1";
+
+        $run_getrider = mysqli_query($conn,$get_info);
+        
+    $res = mysqli_fetch_array($run_getrider);
+    
+
+        $info_userName = $res['username'];
+        $info_userPhone = $res['phone'];
+        $info_current = $res['current'];
+        $info_destination = $res['destination'];
+        $_SESSION['userPhone'] = $info_userPhone;
+echo "
+        
+                    <tbody>
+
+                    <tr>
+                            <td style='width:12em;'>Rider's Name</td>
+                            <td style='width:2em;'>:</td>
+                            <td style='width:40em;'>$info_userName</td>
+
+                        </tr>
+                         <tr>
+                            <td>Rider's Phone</td>
+                            <td>:</td>
+                            <td>$info_userPhone</td>
+                        </tr>
+                        <tr>
+                            <td>Rider's Current Location</td>
+                            <td>:</td>
+                            <td>$info_current</td>
+                        </tr>
+                        <tr>
+                            <td>Rider's Destination</td>
+                            <td>:</td>
+                            <td>$info_destination</td>
+                        </tr>
+                        </tbody>
+                        ";?>
+<input type="button" name="dropRider" value="Drop" onclick="dropRider()"> 
+
+    </table>
+</div>
+
     <div id="map"></div>
-    <script>
+
+<script>
+ function dropRider() {
+  
+  
+  var d = confirm("Is your rider reaching his destination?");
+  if (d == true) {
+  
+   window.location.replace("dropRider.php");
+}
+   else {
+       window.location.replace("gotoRider.php");
+    }
+    
+}
+
+</script>
+
+   <script>
+
       function initMap() {
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var myLatLng = {lat: 2.9946937, lng: 101.7080672};
+
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: {lat: 2.9946937, lng: 101.7080672}
+          zoom: 4,
+          zoom: 14,
+          center: myLatLng
         });
-        directionsDisplay.setMap(map);
 
-        var onChangeHandler = function() {
-          calculateAndDisplayRoute(directionsService, directionsDisplay);
-        };
-        document.getElementById('start').addEventListener('change', onChangeHandler);
-        document.getElementById('end').addEventListener('change', onChangeHandler);
-      }
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
 
-      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-        directionsService.route({
-          origin: document.getElementById('start').value,
-          destination: document.getElementById('end').value,
-          travelMode: 'DRIVING'
-        }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
+             var marker1 = new google.maps.Marker({
+          position: {lat: 3.0225781, lng: 101.715068},
+          map: map,
+          title: 'World!'
         });
       }
     </script>
+ 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAd8CliF9no7A0FwNdp3OSbXoCeSWwVZzs&callback=initMap">
     </script>
-  </body>
+</body>
 </html>
