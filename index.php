@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +18,48 @@
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
 
+<style>
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #cbced3}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: transparent;
+}
+</style>
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -34,7 +79,30 @@
         <li><a href="#services" class="page-scroll active" style="font-size: 15px ;">About</a></li>
         <li><a href="#portfolio" class="page-scroll active" style="font-size: 15px ;">Register</a></li>
         <li><a href="#contact" class="page-scroll active" style="font-size: 15px ;">Contact</a></li>
-        <li><a href="login.php" class="page-scroll fa fa-car" style="font-size: 15px ;"> Login</a></li>
+        <li>
+          <?php
+          if(isset($_SESSION['loginUser'])) {
+
+            echo "
+            
+            <div class=\"dropdown \" style=\"float:right;\">
+  <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
+  <div class=\"dropdown-content\">
+    <a href=\"profile.php\">My Profile</a>
+    <a href=\"payment.php\">Payment</a>
+    <a href=\"logout.php\">Logout</a>
+  </div>
+</div>
+          "; 
+          }else 
+          echo "
+        
+            <a class=\"page-scroll fa fa-car\" style=\"font-size: 15px ;\" href=\"login.php\">Login</a>
+           
+          ";
+          
+          ?>
+          </li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
