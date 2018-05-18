@@ -15,6 +15,7 @@ $conn = OpenCon();
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RideNow | Registration</title>
+
 <meta name="description" content="">
 <meta name="author" content="">
 
