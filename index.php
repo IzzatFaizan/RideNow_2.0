@@ -89,7 +89,7 @@ session_start();
   <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
   <div class=\"dropdown-content\">
     <a href=\"bookCar.php\">Book Now</a>
-    <a href=\"profile.php\">My Profile</a>
+    <a href=\"userProfile.php\">My Profile</a>
     <a href=\"payment.php\">Payment</a>
     <a href=\"logout.php\">Logout</a>
   </div>
