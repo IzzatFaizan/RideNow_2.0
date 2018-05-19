@@ -239,6 +239,7 @@ header .intro-text {
 #services {
 	padding: 120px 0;
 	background: #053740;
+	
 }
 #services h4 {
 	color: #25BAD0;
@@ -247,7 +248,7 @@ header .intro-text {
 #services i.fa {
 	font-size: 32px;
 	margin-bottom: 20px;
-	transition: all 0.5s;
+	transition: all 0.8s;
 	color: #053740;
 	width: 100px;
 	height: 100px;
