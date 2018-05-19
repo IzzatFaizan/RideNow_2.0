@@ -1,4 +1,16 @@
+<?php
+include 'db_connection.php';
 
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+//  echo "Your session is running " . $_SESSION['loginUser'];
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +52,50 @@
         line-height: 20px;
       }
     </style>
+
+<style>
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #cbced3}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: transparent;
+}
+</style>
+
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
@@ -51,14 +107,33 @@
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <a class="navbar-brand page-scroll" href="index.php"><i class="fa fa-car"></i> RIDENOW</a> </div>
     
-    <!-- Collect the nav links, forms, and other content for toggling -->
+  <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="homepage.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
-        <li><a href="#services" class="page-scroll active" style="font-size: 15px ;">About</a></li>
-        <li><a href="#portfolio" class="page-scroll active" style="font-size: 15px ;">Register</a></li>
-        <li><a href="#contact" class="page-scroll" style="font-size: 15px ;">Contact</a></li>
-        <li><a href="#contact" class="page-scroll" style="font-size: 15px ;">Login</a></li>
+        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
+        <li>
+          <?php
+          if(isset($_SESSION['loginUser'])) {
+
+            echo "
+            
+            <div class=\"dropdown \" style=\"float:right;\">
+  <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
+  <div class=\"dropdown-content\">
+  <a href=\"acceptRider.php\">Rider Request</a>
+    <a href=\"logout.php\">Logout</a>
+  </div>
+</div>
+          "; 
+          }else 
+          echo "
+        
+            <a class=\"page-scroll fa fa-car\" style=\"font-size: 15px ;\" href=\"login.php\">Login</a>
+           
+          ";
+          
+          ?>
+          </li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -75,32 +150,47 @@
         <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" action="waitDriver.php" method="post">
+      
+  <?php
 
+$bookingID = $_SESSION['bookingID'];
+        $phone = $_SESSION['loginUser'];
+        $get_info= "SELECT user.username, booking.phone, booking.current, booking.destination FROM user INNER JOIN booking ON user.phone = booking.phone WHERE driverPhone = $phone ORDER by bookingID desc limit 1";
+
+        $run_getrider = mysqli_query($conn,$get_info);
+        
+    $res = mysqli_fetch_array($run_getrider);
+    
+
+        $info_userName = $res['username'];
+        $info_userPhone = $res['phone'];
+        $info_current = $res['current'];
+        $info_destination = $res['destination'];
+        $_SESSION['userPhone'] = $info_userPhone;
+?>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Rider's Name :</label>
-                <input type="text" value="<?php echo $platformName; ?>" class="form-control" readonly="">
+                <input type="text" value="<?php echo $info_userName; ?>" class="form-control" readonly="">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Rider's Phone :</label>
-                <input type="text" value="<?php echo $current; ?>" class="form-control" readonly="" >
+                <input type="text" value="<?php echo $info_userPhone; ?>" class="form-control" readonly="" >
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Rider's Current Location :</label>
-                <input type="text" value="<?php echo $destination; ?>" class="form-control" readonly="" >
+                <input type="text" value="<?php echo $info_current; ?>" class="form-control" readonly="" >
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Rider's Destination :</label>
-                <input type="text" value="<?php echo "RM".$price; ?>" class="form-control" readonly="" >
-                <p class="help-block text-danger"></p>
+                <input type="text" value="<?php echo $info_destination; ?>" class="form-control" readonly="" >                <p class="help-block text-danger"></p>
               </div>
 
-          <input type="submit" name="confirm" class="btn btn-default" value="Drop Rider's">
+          <input type="submit" name="dropRider" onclick="dropRider()" class="btn btn-default" value="Drop Rider">
           <a href="#map" class="btn btn-default page-scroll" value="Go To Maps">Go To Maps</a>
-        </form>
+     
       </div>
     </div>
   </div>
@@ -130,7 +220,7 @@
    window.location.replace("dropRider.php");
 }
    else {
-       window.location.replace("gotoRider.php");
+       window.location.replace("riderOnBoard.php");
     }
     
 }

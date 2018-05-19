@@ -22,7 +22,7 @@ $sql = "UPDATE driver SET driverStatus ='Unavailable' WHERE driverPhone ='$drive
 		
 if ($conn->multi_query($sql) === TRUE) {
     echo "New record created successfully ";
-	header("Location: http://localhost/RideNow_2.0/goToRider.php");
+	header("Location: http://localhost/RideNow_2.0/riderOnBoard.php");
 	
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
