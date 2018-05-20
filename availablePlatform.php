@@ -151,7 +151,7 @@ if( isset($_POST["search"]) ){
 		$current = $_POST["current"];
 		$destination = $_POST["destination"];
 		
- $sqlgetloc = "select * from platform where current='$current' AND destination = '$destination';";
+ $sqlgetloc = "select * from platform where current='$current' AND destination = '$destination' order by price asc;";
     $run_getloc= mysqli_query($conn,$sqlgetloc);
 
 
