@@ -99,6 +99,7 @@ if(isset($_SESSION['loginUser'])) {
             <div class=\"dropdown \" style=\"float:right;\">
   <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
   <div class=\"dropdown-content\">
+   <a href=\"driverProfile.php\">My Profile</a>
   <a href=\"acceptRider.php\">Rider Request</a>
     <a href=\"logout.php\">Logout</a>
   </div>
@@ -127,7 +128,7 @@ if(isset($_SESSION['loginUser'])) {
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>Accept Riders</h2>
-        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
+        <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <table class="table">
       <thead>

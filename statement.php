@@ -1,9 +1,38 @@
+<?php
+include 'db_connection.php';
+
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+//  echo "Your session is running " . $_SESSION['loginUser'];
+  }
+
+$bookingID = $_SESSION['bookingID'];
+        $phone = $_SESSION['loginUser'];
+        $get_info= "SELECT user.username, booking.phone, booking.current, booking.destination, booking.price FROM user INNER JOIN booking ON user.phone = booking.phone WHERE driverPhone = $phone ORDER by bookingID desc limit 1";
+
+        $run_getinfo = mysqli_query($conn,$get_info);
+        
+    $res = mysqli_fetch_array($run_getinfo);
+    
+
+        $info_userName = $res['username'];
+        $info_userPhone = $res['phone'];
+        $info_current = $res['current'];
+        $info_destination = $res['destination'];
+        $info_price = $res['price'];
+        $_SESSION['userPhone'] = $info_userPhone;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RideNow | Registration</title>
+<title>RideNow | Statement</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -30,10 +59,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
-        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">About</a></li>
-        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Register</a></li>
-        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Contact</a></li>
+        <li><a href="homepage.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
+        <li><a href="acceptRider.php" class="page-scroll" style="font-size: 15px ;">Accept Rider</a></li>
         <li><a href="login.php" class="page-scroll fa fa-car" style="font-size: 15px ;"> Login</a></li>
       </ul>
     </div>
@@ -48,29 +75,41 @@
   <div class="overlay">
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
-        <h2>Driver Registration</h2>
+        <h2>Statement</h2>
         <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" action="signup.php" method="post" onsubmit="return validation()">
+        <form name="sentMessage" id="contactForm" action="acceptRider.php" method="post" onsubmit="return validation()">
           <div class="row">
               <div class="form-group">
-                <input type="text" name="drivername" class="form-control" placeholder=" Enter Driver Name" required>
+                 <label style="font-size: 15px ; color: #fff;">Rider's Name :</label>
+                <input type="text" value="<?php echo $info_userName; ?>" class="form-control" readonly="">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input type="text" name="driverphone" id="driverphone" oninput="checkdupdriverphone()" class="form-control" placeholder="Enter Phone Number" required>
-                <small ><p id="duplabelphone"></p></small>
+                 <label style="font-size: 15px ; color: #fff;">Rider's Phone :</label>
+                <input type="text" value="<?php echo $info_userPhone; ?>" class="form-control" readonly="">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                 <label style="font-size: 15px ; color: #fff;">Origin :</label>
+                <input type="text" value="<?php echo $info_current; ?>" class="form-control" readonly="">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                 <label style="font-size: 15px ; color: #fff;">Destination :</label>
+                <input type="text" value="<?php echo $info_destination; ?>" class="form-control" readonly="">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                 <label style="font-size: 15px ; color: #fff;">Price :</label>
+                <input type="text" value="<?php echo "RM".$info_price; ?>" class="form-control" readonly="">
                 <p class="help-block text-danger"></p>
               </div>
           </div>
           
           <div id="success"></div>
-          <input type="submit" name="driverRegister" class="btn btn-default" value="Register">
+          <input type="submit" name="confirmStatement" class="btn btn-default" value="OK">
         </form>
       </div>
     </div>
@@ -85,63 +124,6 @@
     </div>
   </div>
 </div>
-
-<script>
-function validation(){
-  var drivername = $("#drivername").val();
-  var driverphone = $("#driverphone").val();
-  var phonelabel = document.getElementById("duplabelphone").textContent;
-  var label = "Phone number is valid";
-  var password = $("#password").val();
-
-
-  if (drivername == '' || driverphone == '' || password == '') {
-        alert("Please fill in all the fields");
-        return false;
-        
-        } else if (!(phonelabel==label)) {
-        alert("Phone number has been used");
-        return false;
-        } else if ((password.length) < 6) {
-        alert("Password should at least 6 character in length");
-        return false;
-        } 
-
-
-}
-</script>
-
-  <script>
-function checkdupdriverphone() {
-    var driverphone = $("#driverphone").val();
-  $.ajax({
-        type: 'POST',
-        url: "ajax/checkdupdriverphone.php",
-        data: { driverphone: driverphone},
-
-        error: function(data) {
-
-            alert(" Can't do because: " + data);
-        },
-        success: function(data) {
-      if(data == "false"){
-      if((driverphone.length)<9){
-      document.getElementById("duplabelphone").style.color = "red";
-      document.getElementById("duplabelphone").innerHTML = "Phone number must be more than 9 digits";
-      }
-      else {document.getElementById("duplabelphone").style.color = "green";
-      document.getElementById("duplabelphone").innerHTML = "Phone number is valid";}
-      }
-      else if(data == "true"){
-      document.getElementById("duplabelphone").style.color = "red";
-      document.getElementById("duplabelphone").innerHTML = "Phone number is invalid";}
-      
-        }
-  });
-  
-}
-</script>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
 
 </body>
 </html>

@@ -1,3 +1,25 @@
+<?php
+include 'db_connection.php';
+
+$conn = OpenCon();
+
+//echo "Connected Successfully";
+
+session_start();
+if(isset($_SESSION['loginUser'])) {
+ // echo "Your session is running " . $_SESSION['loginUser'];
+  }
+
+$phone = $_SESSION['loginUser'];
+  $get_info= "select driver.driverName, driver.driverPhone, car.carType, car.platNo, car.colour, car.year from driver inner join car on driver.carID = car.carID where driverPhone='$phone'";
+
+    $run_getdriver = mysqli_query($conn,$get_info);
+    
+  $result = mysqli_fetch_array($run_getdriver);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +37,48 @@
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
 
+<style>
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #cbced3}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: transparent;
+}
+</style>
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -30,9 +94,31 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="homepage.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
-        <li><a href="acceptRider.php" class="page-scroll" style="font-size: 15px ;">Accept Rider</a></li>
-        <li><a href="login.php" class="page-scroll fa fa-car" style="font-size: 15px ;"> Login</a></li>
+        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
+        <li>
+          <?php
+          if(isset($_SESSION['loginUser'])) {
+
+            echo "
+            
+            <div class=\"dropdown \" style=\"float:right;\">
+  <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
+  <div class=\"dropdown-content\">
+  <a href=\"driverProfile.php\">My Profile</a>
+  <a href=\"acceptRider.php\">Rider Request</a>
+    <a href=\"logout.php\">Logout</a>
+  </div>
+</div>
+          "; 
+          }else 
+          echo "
+        
+            <a class=\"page-scroll fa fa-car\" style=\"font-size: 15px ;\" href=\"login.php\">Login</a>
+           
+          ";
+          
+          ?>
+          </li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -47,26 +133,45 @@
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>Driver's Profile</h2>
-        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
+        <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <form name="sentMessage" id="contactForm" action="signup.php" method="post" onsubmit="return validation()">
+      
           <div class="row">
               <div class="form-group">
-                <label style="font-size: 15px ; color: #fff;">Driver's Name :</label>
-                <input type="text" name="drivername" class="form-control"  readonly="">
+                <label style="font-size: 15px ; color: #fff;">Name :</label>
+                <input type="text" value="<?php echo $result['driverName'];?>" class="form-control" readonly="">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <label style="font-size: 15px ; color: #fff;">Driver's Phone Number :</label>
-                <input type="text" name="driverphone" id="driverphone" oninput="checkdupdriverphone()" class="form-control" readonly="">
-                <small ><p id="duplabelphone"></p></small>
+                <label style="font-size: 15px ; color: #fff;">Mobile Number :</label>
+                <input type="text" value="<?php echo $result['driverPhone'];?>" class="form-control" readonly="">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <label style="font-size: 15px ; color: #fff;">Car Type :</label>
+                <input type="text" value="<?php echo $result['carType'];?>" class="form-control" readonly="">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <label style="font-size: 15px ; color: #fff;">Car Plat Number :</label>
+                <input type="text" value="<?php echo $result['platNo'];?>" class="form-control" readonly="">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <label style="font-size: 15px ; color: #fff;">Car Colour :</label>
+                <input type="text" value="<?php echo $result['colour'];?>" class="form-control" readonly="">
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <label style="font-size: 15px ; color: #fff;">Car Year of Manufactured :</label>
+                <input type="text" value="<?php echo $result['year'];?>" class="form-control" readonly="">
                 <p class="help-block text-danger"></p>
               </div>
           </div>
           
           <div id="success"></div>
-          <input type="submit" name="driverRegister" class="btn btn-default" value="Register">
+          <input type="button" name="back" class="btn btn-default" value="Back" onClick="document.location.href='acceptRider.php'">
         </form>
       </div>
     </div>

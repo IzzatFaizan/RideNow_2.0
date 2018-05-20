@@ -134,7 +134,7 @@ $driverPhone = $_SESSION['driverPhone'];
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>Give Your Comment</h2>
-        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
+        <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
         <form name="sentMessage" id="contactForm" novalidate action="commentSubmit.php" method="POST">
@@ -143,7 +143,7 @@ $driverPhone = $_SESSION['driverPhone'];
             <p class="help-block text-danger"></p>
           </div>
           <div id="success"></div>
-          <button type="submit" name="comment" class="btn btn-default">Send Comment</button>
+          <button type="submit" name="comment" class="btn btn-default" onclick="submitComment()">Send Comment</button>
         </form>
       </div>
     </div>
@@ -159,6 +159,15 @@ $driverPhone = $_SESSION['driverPhone'];
     </div>
   </div>
 </div>
+<script>
+ function submitComment() {
+  
+ alert("Your comment has been submitted successfully.");
+ window.location.replace("commentSubmit.php");
+    
+}
+
+</script>
 
 </body>
 </html>

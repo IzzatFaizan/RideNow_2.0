@@ -153,7 +153,7 @@ $conn->close();
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>We are finding a driver for you </h2>
-        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
+        <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
         <div class="col-md-8 col-md-offset-2">
           <div class="cssload-thecube">

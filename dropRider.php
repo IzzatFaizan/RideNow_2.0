@@ -27,7 +27,7 @@ if ($conn->multi_query($sql) === TRUE) {
 	
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-	header("Location: http://localhost/RideNow_2.0/goToRider.php");
+	header("Location: http://localhost/RideNow_2.0/riderOnBoard.php");
 	
 	
 }

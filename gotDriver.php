@@ -169,7 +169,7 @@ if(isset($_SESSION['loginUser'])) {
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <label><a style="font-size: 15px">Car Color :</a></label>
+                <label><a style="font-size: 15px">Car Colour :</a></label>
                 <input type="text" value="<?php echo $info_colour; ?>" class="form-control" readonly>
                 <p class="help-block text-danger"></p>
               </div>
