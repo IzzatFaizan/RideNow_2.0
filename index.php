@@ -4,6 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="shortcut icon" href="img/tab.png" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RideNow</title>
@@ -86,14 +87,14 @@ session_start();
             echo "
             
             <div class=\"dropdown \" style=\"float:right;\">
-  <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
-  <div class=\"dropdown-content\">
-    <a href=\"bookCar.php\">Book Now</a>
-    <a href=\"userProfile.php\">My Profile</a>
-    <a href=\"payment.php\">Payment</a>
-    <a href=\"logout.php\">Logout</a>
-  </div>
-</div>
+              <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
+              <div class=\"dropdown-content\">
+                <a href=\"bookCar.php\">Book Now</a>
+                <a href=\"userProfile.php\">My Profile</a>
+                <a href=\"payment.php\">Payment</a>
+                <a href=\"logout.php\">Logout</a>
+              </div>
+            </div>
           "; 
           }else 
           echo "
@@ -149,7 +150,7 @@ session_start();
       </div>
       <div class="col-xs-6 col-md-3"> <i class="fa fa-line-chart"></i>
         <h4>Marketing</h4>
-        <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque.</p>
+        <p>We are targeting to achieve current target market and serve the best car riding services over the wolrd</p>
       </div>
     </div>
   </div>
@@ -195,7 +196,7 @@ session_start();
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>Get In Touch</h2>
-        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experiance more.</p>
+        <p>RideNow provide you with comfortable car enviroment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <div class="col-md-8 col-md-offset-2">
         <form name="sentMessage" id="contactForm" novalidate>
