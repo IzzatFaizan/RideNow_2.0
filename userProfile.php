@@ -16,8 +16,25 @@ $get_userinfo= "select * from user where phone = '$phone'";
     $run_getuser = mysqli_query($conn,$get_userinfo);
     
   $result = mysqli_fetch_array($run_getuser);
+$userID = $result['userID'];
 
+?>
+<?php
+if (isset($_POST['update_profile'])) {
+    $username = $_POST["username"];
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
+    $emergencyPhone = $_POST["emerPhone"];
+    $emergencyName = $_POST["emerName"];
 
+        $update_profile = "UPDATE user SET username = '$username', phone = '$phone', email = '$email', emergencyPhone = '$emergencyPhone', emergencyName = '$emergencyName' WHERE userID = '$userID'";
+        $run_update = mysqli_query ($conn, $update_profile);
+
+        if ($run_update) {
+            echo "<script>alert('Your profile updated successfully')</script>";
+            echo "<script>window.open('userProfile.php?userProfile','_self')</script>";
+        }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,47 +148,52 @@ $get_userinfo= "select * from user where phone = '$phone'";
 
 <!-- Contact Section -->
 <div id="contact" class="text-center">
+ 
   <div class="overlay">
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
         <h2>User Profile</h2>
         <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
+       <form action = "userProfile.php" method = "post">
       <div class="col-md-8 col-md-offset-2">
-      
+        
           <div class="row">
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Username :</label>
-                <input type="text" value="<?php echo $result['username'];?>" class="form-control" readonly="">
+                <input type="text" name="username" value="<?php echo $result['username'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Phone Number :</label>
-                <input type="text" value="<?php echo $result['phone'];?>" class="form-control" readonly="" >
+                <input type="text" name="phone" value="<?php echo $result['phone'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Email :</label>
-                <input type="text" value="<?php echo $result['email'];?>" class="form-control" readonly="" >
+                <input type="email" name="email" value="<?php echo $result['email'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Emergency Contact :</label>
-                <input type="text" value="<?php echo $result['emergencyPhone'];?>" class="form-control" readonly="" >
+                <input type="text" name="emerPhone" value="<?php echo $result['emergencyPhone'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Emergency Contact Name :</label>
-                <input type="text" value="<?php echo $result['emergencyName']; ?>" class="form-control" readonly="" >
+                <input type="text" name="emerName" value="<?php echo $result['emergencyName']; ?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
           </div>
           <div id="success"></div>
+          <input type="submit" name="update_profile" class="btn btn-default" value="Update">
           <input type="button" name="back" class="btn btn-default" value="Back" onClick="document.location.href='bookCar.php'">
-        
+     
       </div>
+    </form>
     </div>
   </div>
+  
 </div>
 
 
