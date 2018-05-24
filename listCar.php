@@ -124,7 +124,7 @@ $conn = OpenCon();
   <div class="overlay">
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
-        <h2>Accept Riders</h2>
+        <h2>Available Car</h2>
         <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <table class="table">
@@ -139,32 +139,35 @@ $conn = OpenCon();
       </thead>
       <tbody>
      <?php
- $sqlgetloc = "select * from car";
-    $run_getloc= mysqli_query($conn,$sqlgetloc);
+        $sqlgetloc = "select * from car";
+        $run_getloc= mysqli_query($conn,$sqlgetloc);
 
 
-   while( $row = mysqli_fetch_array($run_getloc)) {
+        while( $row = mysqli_fetch_array($run_getloc)) {
     
-      echo "<tr>";
-      echo "<td>".$row['carType']."</td>";
-      echo "<td>".$row['platNo']."</td>";
-      echo "<td>".$row['colour']."</td>";
-      echo "<td>".$row['year']."</td>";
-      echo "<td>".$row['carStatus']."</td>";
-      echo "</tr>";
+          echo "<tr>";
+          echo "<td>".$row['carType']."</td>";
+          echo "<td>".$row['platNo']."</td>";
+          echo "<td>".$row['colour']."</td>";
+          echo "<td>".$row['year']."</td>";
+          echo "<td>".$row['carStatus']."</td>";
+          echo "</tr>";
 
-}
-      echo "<td><a class='btn btn-default' href=\"registerCar.php\">Add Car</a></td>";
-$conn->close();
+      }
+        
+        $conn->close();
 ?>
        
      
       </tbody>
     </table>
+    <form action="registeCar.php" method="post">
+      <input type="submit" name="getdriver" class="btn btn-default" value="Add Car">
+    </form>
       </div>
     </div>
-  </div>
 </div>
+
 
 
 
