@@ -86,31 +86,8 @@ $conn = OpenCon();
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
-        <li>
-          <?php
-          if(isset($_SESSION['loginUser'])) {
-
-            echo "
-            
-            <div class=\"dropdown \" style=\"float:right;\">
-              <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
-              <div class=\"dropdown-content\">
-                <a href=\"driverProfile.php\">My Profile</a>
-                <a href=\"acceptRider.php\">Rider Request</a>
-                <a href=\"logout.php\">Logout</a>
-              </div>
-            </div>
-          "; 
-          }else 
-          echo "
-        
-            <a class=\"page-scroll fa fa-car\" style=\"font-size: 15px ;\" href=\"login.php\"> Login</a>
-           
-          ";
-          
-          ?>
-          </li>
+        <li><a href="listCar.php" class="page-scroll" style="font-size: 15px ;">Car</a></li>
+        <li><a href="listComplaint.php" class="page-scroll" style="font-size: 15px ;">Comment</a></li>
       </ul>
     </div>
     
