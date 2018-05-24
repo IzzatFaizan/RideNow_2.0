@@ -162,10 +162,10 @@ $get_paymentMethod = "select paymentMethod from user where phone = '$phone'";
                 <p class="help-block text-danger"></p> 
                 <div class="reveal-if-active">
             <br>
-           <input type="text" class="form-control" name="cardnum" id="cardnum" placeholder="Card Number" required>      
-           <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" required>
+           <input type="text" class="form-control" name="cardnum" id="cardnum" placeholder="Card Number">      
+           <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV" >
            <label for="cash">Expiry Date</label>
-            <input type="month" class="form-control" name="exp" id="exp" required>
+            <input type="month" class="form-control" name="exp" id="exp">
           </div>
               </div>
 
