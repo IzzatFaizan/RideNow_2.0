@@ -23,9 +23,10 @@ $phone = $_SESSION['loginUser'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="shortcut icon" href="img/tab.png" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RideNow | Registration</title>
+<title>RideNow | Driver's Profile</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -102,13 +103,13 @@ $phone = $_SESSION['loginUser'];
             echo "
             
             <div class=\"dropdown \" style=\"float:right;\">
-  <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
-  <div class=\"dropdown-content\">
-  <a href=\"driverProfile.php\">My Profile</a>
-  <a href=\"acceptRider.php\">Rider Request</a>
-    <a href=\"logout.php\">Logout</a>
-  </div>
-</div>
+              <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
+              <div class=\"dropdown-content\">
+                <a href=\"driverProfile.php\">My Profile</a>
+                <a href=\"acceptRider.php\">Rider Request</a>
+                <a href=\"logout.php\">Logout</a>
+              </div>
+            </div>
           "; 
           }else 
           echo "

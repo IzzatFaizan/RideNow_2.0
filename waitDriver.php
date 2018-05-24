@@ -40,9 +40,10 @@ $conn->close();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="shortcut icon" href="img/tab.png" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title> RideNow | Driver Login</title>
+<title> RideNow | Wait for Driver</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta http-equiv="refresh" content="4; URL='http://localhost/RideNow_2.0/pickupStatus.php'"/>
@@ -121,14 +122,14 @@ $conn->close();
             echo "
             
             <div class=\"dropdown \" style=\"float:right;\">
-  <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
-  <div class=\"dropdown-content\">
-  <a href=\"bookCar.php\">Book Now</a>
-    <a href=\"userProfile.php\">My Profile</a>
-    <a href=\"payment.php\">Payment</a>
-    <a href=\"logout.php\">Logout</a>
-  </div>
-</div>
+              <button class=\"dropbtn page-scroll fa fa-car\" style=\"font-size: 15px ;\"> MY ACCOUNT</button>
+              <div class=\"dropdown-content\">
+                <a href=\"bookCar.php\">Book Now</a>
+                <a href=\"userProfile.php\">My Profile</a>
+                <a href=\"payment.php\">Payment</a>
+                <a href=\"logout.php\">Logout</a>
+              </div>
+            </div>
           "; 
           }else 
           echo "

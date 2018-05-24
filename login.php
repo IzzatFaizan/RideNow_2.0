@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="shortcut icon" href="img/tab.png" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RideNow</title>
+<title>RideNow | Login</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
