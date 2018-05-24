@@ -15,7 +15,7 @@ $conn = OpenCon();
 <link rel="shortcut icon" href="img/tab.png" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title> RideNow | Accept Rider</title>
+<title> RideNow | Admin Portal</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -80,7 +80,7 @@ $conn = OpenCon();
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand page-scroll" href="index.php"><i class="fa fa-car"></i> RideNow</a> 
+      <a class="navbar-brand page-scroll" href="index.php"><i class="fa fa-car"></i> RideNow | Admin Portal</a> 
     </div>
     
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -134,6 +134,7 @@ $conn = OpenCon();
           <th><h1>Car Plat Number</h1></th>
           <th><h1>Car Colour</h1></th>
           <th><h1>Year of Manufactured</h1></th>
+          <th><h1>Status</h1></th>
         </tr>
       </thead>
       <tbody>
@@ -149,6 +150,7 @@ $conn = OpenCon();
       echo "<td>".$row['platNo']."</td>";
       echo "<td>".$row['colour']."</td>";
       echo "<td>".$row['year']."</td>";
+      echo "<td>".$row['carStatus']."</td>";
       echo "</tr>";
 
 }
