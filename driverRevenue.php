@@ -174,9 +174,10 @@
           <div class="dash-unit">
             <dtitle>User Profile</dtitle>
             <hr>
-        <div class="thumbnail">
+
           <img src="img/face80x80.jpg" alt="Marcel Newman" class="img-circle">
-        </div><!-- /thumbnail -->
+        <br>
+        <br>
         <h1>Marcel Newman</h1>
         <h3>Madrid, Spain</h3>
         <br>
@@ -239,14 +240,15 @@
     <!-- GRAPH CHART - lineandbars.js file -->     
         <div class="col-sm-3 col-lg-3">
           <div class="dash-unit">
-          <dtitle>Customer Statistic</dtitle>
+          <dtitle>Customer Rating Statistic</dtitle>
           <hr>
           <div class="section-graph">
             <div id="importantchart"></div>
             <br>
             <div class="graph-info">
               <i class="graph-arrow"></i>
-              <span class="graph-info-big">634.39</span>
+              <span class="graph-info-big">98.75%</span>
+              <span class="graph-info-small"><img src="img/up-small.png" alt="">  Satisfaction</span>
             </div>
           </div>
       </div>
