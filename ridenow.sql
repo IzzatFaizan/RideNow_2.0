@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2018 at 09:48 AM
+-- Generation Time: May 25, 2018 at 04:13 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -46,7 +46,7 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`bookingID`, `phone`, `platformName`, `current`, `destination`, `price`, `pickupStatus`, `driverPhone`, `time`, `dropoffStatus`) VALUES
-(30, '+601231231231', 'MyCar', 'K6 UPM', 'KTM Serdang', 8.00, 'Picked', '3213213213', '2018-05-12 13:46:45', 'Dropped');
+(48, '+601756426091', 'MyCar', 'K6 UPM', 'KTM Serdang', 8.00, 'Picked', '1231231231', '2018-05-25 09:43:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -59,15 +59,18 @@ CREATE TABLE `car` (
   `carType` varchar(50) NOT NULL,
   `platNo` varchar(10) NOT NULL,
   `colour` varchar(10) NOT NULL,
-  `year` varchar(5) NOT NULL
+  `year` varchar(5) NOT NULL,
+  `carStatus` varchar(20) NOT NULL DEFAULT 'Available'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `car`
 --
 
-INSERT INTO `car` (`carID`, `carType`, `platNo`, `colour`, `year`) VALUES
-(1, 'Myvi', 'NLH 2020', 'blue', '2016');
+INSERT INTO `car` (`carID`, `carType`, `platNo`, `colour`, `year`, `carStatus`) VALUES
+(1, 'Myvi', 'NLH 2020', 'blue', '2016', 'Available'),
+(2, 'Camry', 'PPP 2222', 'red', '2009', 'Available'),
+(3, 'Kancil', 'lll 2020', 'red', '2015', 'Available');
 
 -- --------------------------------------------------------
 
@@ -79,15 +82,26 @@ CREATE TABLE `comment` (
   `commentID` int(11) NOT NULL,
   `commentMsg` varchar(100) NOT NULL,
   `driverName` varchar(50) NOT NULL,
-  `driverPhone` varchar(50) NOT NULL
+  `driverPhone` varchar(50) NOT NULL,
+  `complaintStatus` varchar(20) NOT NULL DEFAULT 'Unresolved'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`commentID`, `commentMsg`, `driverName`, `driverPhone`) VALUES
-(3, 'gud', 'lololo', '3213213213');
+INSERT INTO `comment` (`commentID`, `commentMsg`, `driverName`, `driverPhone`, `complaintStatus`) VALUES
+(3, 'gud', 'lololo', '3213213213', 'Unresolved'),
+(4, 'yiyiyiyyiyi', 'lololo', '3213213213', 'Unresolved'),
+(5, '', 'lololo', '3213213213', 'Resolved'),
+(6, 'rewqrgtykkkk', 'lololo', '3213213213', 'Unresolved'),
+(7, 'gooood', 'lololo', '3213213213', 'Unresolved'),
+(8, 'qwqwq', 'lololo', '3213213213', 'Unresolved'),
+(9, 'good', 'lololo', '3213213213', 'Unresolved'),
+(10, 'weeww', 'lololo', '3213213213', 'Unresolved'),
+(11, 'refnn', 'lololo', '3213213213', 'Unresolved'),
+(12, 'refnn', 'lololo', '3213213213', 'Resolved'),
+(13, 'nice', 'lololo', '3213213213', 'Resolved');
 
 -- --------------------------------------------------------
 
@@ -101,15 +115,20 @@ CREATE TABLE `driver` (
   `driverPhone` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `carID` int(11) NOT NULL,
-  `driverStatus` varchar(20) DEFAULT 'Idle'
+  `driverStatus` varchar(20) DEFAULT 'Idle',
+  `carType` varchar(20) NOT NULL,
+  `platNo` varchar(10) NOT NULL,
+  `colour` varchar(20) NOT NULL,
+  `year` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `driver`
 --
 
-INSERT INTO `driver` (`driverID`, `driverName`, `driverPhone`, `password`, `carID`, `driverStatus`) VALUES
-(2, 'lololo', '3213213213', '123123', 1, 'Idle');
+INSERT INTO `driver` (`driverID`, `driverName`, `driverPhone`, `password`, `carID`, `driverStatus`, `carType`, `platNo`, `colour`, `year`) VALUES
+(2, 'lololo', '3213213213', '123123', 1, 'Complained', '', '', '', ''),
+(13, 'iiioooo', '1231231231', '123123', 0, 'Unavailable', 'Kancil', '123123', 'red', '2009');
 
 -- --------------------------------------------------------
 
@@ -162,7 +181,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `username`, `phone`, `email`, `password`, `emergencyPhone`, `emergencyName`, `paymentMethod`) VALUES
-(8, 'lololo', '+60175642609', 'lololo@gmail.com', '123123', '+60175642609', 'lolo', 'cash');
+(8, 'lololo', '+60175642609', 'lololo@gmail.com', '123123', '+60175642609', 'lala', 'card'),
+(18, 'thtrh', '1234567890', 'leehui_ng@yahoo.com', '123123', '1234567890', 'jyujy', 'cash'),
+(21, 'admin', '123456789011', 'leehui_ng@yahoo.com', '123123', '1234567890', 'assaass', 'cash'),
+(22, 'admin', '+601756426091', 'leehui_ng@yahoo.com', '123123', '+601756426091', 'Ng Lee Hui', 'cash');
 
 --
 -- Indexes for dumped tables
@@ -213,25 +235,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `carID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `carID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `driver`
 --
 ALTER TABLE `driver`
-  MODIFY `driverID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `driverID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `platform`
@@ -243,7 +265,7 @@ ALTER TABLE `platform`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
