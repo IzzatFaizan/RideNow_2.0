@@ -55,6 +55,7 @@
       <div class="col-md-8 col-md-offset-2">
         <form name="sentMessage" id="contactForm" action="signup.php" method="post" onsubmit="return validation()">
           <div class="row">
+            <h3>Driver Details</h3>
               <div class="form-group">
                 <input type="text" name="drivername" class="form-control" placeholder=" Enter Driver Name" required>
                 <p class="help-block text-danger"></p>
@@ -66,6 +67,37 @@
               </div>
               <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                <p class="help-block text-danger"></p>
+              </div>
+
+              <h3>Car Details</h3>
+              <div class="form-group">
+                <input type="text" name="carType" class="form-control" placeholder="Enter Car Model" required>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <input type="text" name="platNo" class="form-control" placeholder="Enter Plat Number" required>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <input type="text" name="colour" class="form-control" placeholder="Enter Car Colour" required>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <select id="year" name="year" class="form-control">                      
+                  <option style="background-color: #000000" value="2018">2018</option>
+                  <option style="background-color: #000000" value="2017">2017</option>
+                  <option style="background-color: #000000" value="2016">2016</option>
+                  <option style="background-color: #000000" value="2015">2015</option>
+                  <option style="background-color: #000000" value="2014">2014</option>
+                  <option style="background-color: #000000" value="2013">2013</option>
+                  <option style="background-color: #000000" value="2012">2012</option>
+                  <option style="background-color: #000000" value="2011">2011</option>
+                  <option style="background-color: #000000" value="2010">2010</option>
+                  <option style="background-color: #000000" value="2009">2009</option>
+                  <option style="background-color: #000000" value="2008">2008</option>
+                  <option style="background-color: #000000" value="2007">2007</option>
+                </select>
                 <p class="help-block text-danger"></p>
               </div>
           </div>

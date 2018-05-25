@@ -17,7 +17,7 @@ if(isset($_SESSION['loginUser'])) {
 <link rel="shortcut icon" href="img/tab.png" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="5; URL='http://localhost/RideNow_2.0/dropoffStatus.php'"/>
+<meta http-equiv="refresh" content="15; URL='http://localhost/RideNow_2.0/dropoffStatus.php'"/>
 <title>RideNow | On Board</title>
 <meta name="description" content="">
 <meta name="author" content="">
@@ -158,7 +158,7 @@ if(isset($_SESSION['loginUser'])) {
   <?php
 
   $phone = $_SESSION['loginUser'];
-        $get_info= "select booking.driverPhone, driver.driverName, car.carType, car.platNo, car.colour from booking inner join driver on booking.driverPhone = driver.driverPhone inner join car on driver.carID = car.carID where phone='$phone' order by bookingID desc limit 1";
+        $get_info= "select booking.driverPhone, driver.driverName, driver.carType, driver.platNo, driver.colour from booking inner join driver on booking.driverPhone = driver.driverPhone where phone='$phone' order by bookingID desc limit 1";
 
         $run_getdriver = mysqli_query($conn,$get_info);
         

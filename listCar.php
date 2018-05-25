@@ -88,6 +88,7 @@ $conn = OpenCon();
       <ul class="nav navbar-nav navbar-right">
         <li><a href="listCar.php" class="page-scroll" style="font-size: 15px ;">Car</a></li>
         <li><a href="listComplaint.php" class="page-scroll" style="font-size: 15px ;">Comment</a></li>
+        <li><a href="listDriver.php" class="page-scroll" style="font-size: 15px ;">Driver</a></li>
       </ul>
     </div>
     

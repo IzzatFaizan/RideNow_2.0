@@ -99,7 +99,7 @@ session_start();
           }else 
           echo "
         
-            <a class=\"page-scroll fa fa-car\" style=\"font-size: 15px ;\" href=\"login.php\">Login</a>
+            <a class=\"page-scroll fa fa-car\" style=\"font-size: 15px ;\" href=\"login.php\"> Login</a>
            
           ";
           

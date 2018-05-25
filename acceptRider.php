@@ -90,7 +90,6 @@ if(isset($_SESSION['loginUser'])) {
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
         <li>
           <?php
           if(isset($_SESSION['loginUser'])) {
@@ -150,7 +149,13 @@ if(isset($_SESSION['loginUser'])) {
 
  $sqlgetloc = "select * from booking where pickupStatus is NULL;";
     $run_getloc= mysqli_query($conn,$sqlgetloc);
-
+$count  = mysqli_num_rows($run_getloc);
+      if($count == 0) {
+         echo "<tr>";
+      echo "<td style=\"color:white\" colspan=\"5\">There's no rider request now.</td>";
+       echo "<tr>";
+      }
+      else {
 
    while( $row = mysqli_fetch_array($run_getloc)) {
     
@@ -162,7 +167,7 @@ if(isset($_SESSION['loginUser'])) {
       echo "<td><a class='bookBtn' href=\"acceptbooking.php?bookingID=$row[bookingID]\">Accept</a></td>";
       echo "</tr>";
 }
-
+}
 $conn->close();
 ?>
        

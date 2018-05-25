@@ -11,13 +11,34 @@ if(isset($_SESSION['loginUser'])) {
   }
 
 $phone = $_SESSION['loginUser'];
-  $get_info= "select driver.driverName, driver.driverPhone, car.carType, car.platNo, car.colour, car.year from driver inner join car on driver.carID = car.carID where driverPhone='$phone'";
+  $get_info= "select * from driver WHERE driverPhone = $phone";
+//  $get_info= "select driver.driverName, driver.driverPhone, car.carType, car.platNo, car.colour, car.year from driver inner join car on driver.carID = car.carID where driverPhone='$phone'";
 
     $run_getdriver = mysqli_query($conn,$get_info);
     
   $result = mysqli_fetch_array($run_getdriver);
+$driverID = $result['driverID'];
+
+?>
+
+<?php
+if (isset($_POST['update_profile'])) {
+    $drivername = $_POST["drivername"];
+    $driverphone = $_POST["driverphone"];
+    $carType = $_POST["carType"];
+    $platNo = $_POST["platNo"];
+    $colour = $_POST["colour"];
+    $year = $_POST["year"];
 
 
+        $update_profile = "UPDATE driver SET driverName = '$drivername', driverPhone = '$driverphone', carType = '$carType', platNo = '$platNo', colour = '$colour', year = '$year' WHERE driverID = '$driverID'";
+        $run_update = mysqli_query ($conn, $update_profile);
+
+        if ($run_update) {
+            echo "<script>alert('Your profile updated successfully')</script>";
+            echo "<script>window.open('driverProfile.php?driverProfile','_self')</script>";
+        }
+}
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +116,7 @@ $phone = $_SESSION['loginUser'];
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="index.php" class="page-scroll" style="font-size: 15px ;">Home</a></li>
+       
         <li>
           <?php
           if(isset($_SESSION['loginUser'])) {
@@ -136,45 +157,49 @@ $phone = $_SESSION['loginUser'];
         <h2>Driver's Profile</h2>
         <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
+      <form action = "driverProfile.php" method = "post">
       <div class="col-md-8 col-md-offset-2">
       
           <div class="row">
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Name :</label>
-                <input type="text" value="<?php echo $result['driverName'];?>" class="form-control" readonly="">
+                <input type="text" name="drivername" value="<?php echo $result['driverName'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Mobile Number :</label>
-                <input type="text" value="<?php echo $result['driverPhone'];?>" class="form-control" readonly="">
+                <input type="text" name="driverphone" value="<?php echo $result['driverPhone'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <label style="font-size: 15px ; color: #fff;">Car Type :</label>
-                <input type="text" value="<?php echo $result['carType'];?>" class="form-control" readonly="">
+                <label style="font-size: 15px ; color: #fff;">Car Model :</label>
+                <input type="text" name="carType" value="<?php echo $result['carType'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Car Plat Number :</label>
-                <input type="text" value="<?php echo $result['platNo'];?>" class="form-control" readonly="">
+                <input type="text" name="platNo" value="<?php echo $result['platNo'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Car Colour :</label>
-                <input type="text" value="<?php echo $result['colour'];?>" class="form-control" readonly="">
+                <input type="text" name="colour" value="<?php echo $result['colour'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
                 <label style="font-size: 15px ; color: #fff;">Car Year of Manufactured :</label>
-                <input type="text" value="<?php echo $result['year'];?>" class="form-control" readonly="">
+                <input type="text" name="year" value="<?php echo $result['year'];?>" class="form-control">
                 <p class="help-block text-danger"></p>
               </div>
+
           </div>
           
           <div id="success"></div>
+          <input type="submit" name="update_profile" class="btn btn-default" value="Update">
           <input type="button" name="back" class="btn btn-default" value="Back" onClick="document.location.href='acceptRider.php'">
-        </form>
+    
       </div>
+    </form>
     </div>
   </div>
 </div>

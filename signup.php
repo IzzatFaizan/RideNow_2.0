@@ -40,9 +40,13 @@ else if( isset($_POST["driverRegister"]) ){
 		$drivername = $_POST["drivername"];
 		$driverphone = $_POST["driverphone"];
 		$password = $_POST["password"];
+		$carType = $_POST["carType"];
+		$platNo = $_POST["password"];
+		$colour = $_POST["colour"];
+		$year = $_POST["year"];
   
 
-$sql = "INSERT INTO driver (driverName, driverPhone, password) VALUES ('$drivername', '$driverphone', '$password')";
+$sql = "INSERT INTO driver (driverName, driverPhone, password, carType, platNo, colour, year) VALUES ('$drivername', '$driverphone', '$password', '$carType', '$platNo', '$colour', '$year')";
 		
 if ($conn->multi_query($sql) === TRUE) {
     echo "New record created successfully ";

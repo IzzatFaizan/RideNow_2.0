@@ -12,7 +12,7 @@ if(isset($_SESSION['loginUser'])) {
   }
 
     $phone = $_SESSION['loginUser'];
-    $get_info= "select booking.driverPhone, driver.driverName, car.carType, car.platNo, car.colour from booking inner join driver on booking.driverPhone = driver.driverPhone inner join car on driver.carID = car.carID where phone='$phone' order by bookingID desc limit 1";
+    $get_info= "select booking.driverPhone, driver.driverName, driver.carType, driver.platNo, driver.colour from booking inner join driver on booking.driverPhone = driver.driverPhone where phone='$phone' order by bookingID desc limit 1";
 
     $run_getdriver = mysqli_query($conn,$get_info);
     

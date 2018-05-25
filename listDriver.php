@@ -86,9 +86,9 @@ $conn = OpenCon();
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-      
+
         <li><a href="listComplaint.php" class="page-scroll" style="font-size: 15px ;">Comment</a></li>
-         <li><a href="listDriver.php" class="page-scroll" style="font-size: 15px ;">Driver</a></li>
+        <li><a href="listDriver.php" class="page-scroll" style="font-size: 15px ;">Driver</a></li>
       </ul>
     </div>
     
@@ -102,33 +102,41 @@ $conn = OpenCon();
   <div class="overlay">
     <div class="container">
       <div class="col-md-8 col-md-offset-2 section-title">
-        <h2>Comment</h2>
+        <h2>Driver List</h2>
         <p>RideNow provide you with comfortable car environment at the lowest price depends on traffic and offers. Please stay with us to experience more.</p>
       </div>
       <table class="table">
       <thead>
         <tr>
-          <th><h1>Comment ID</h1></th>
-          <th><h1>Message</h1></th>
+          <th><h1>ID</h1></th>
           <th><h1>Driver Name</h1></th>
           <th><h1>Driver Phone</h1></th>
+          <th><h1>Driver Status</h1></th>
+          <th><h1>Car Model</h1></th>
+          <th><h1>Plat Number</h1></th>
+          <th><h1>Car Colour</h1></th>
+          <th><h1>Car Year of Manufactured</h1></th>
           <th><h1>Action</h1></th>
         </tr>
       </thead>
       <tbody>
      <?php
-        $sqlgetloc = "select * from comment WHERE complaintStatus = 'Unresolved'";
+        $sqlgetloc = "select * from driver WHERE driverStatus != 'Complained'";
         $run_getloc= mysqli_query($conn,$sqlgetloc);
 
 
         while( $row = mysqli_fetch_array($run_getloc)) {
     
           echo "<tr>";
-          echo "<td>".$row['commentID']."</td>";
-          echo "<td>".$row['commentMsg']."</td>";
+          echo "<td>".$row['driverID']."</td>";
           echo "<td>".$row['driverName']."</td>";
           echo "<td>".$row['driverPhone']."</td>";
-          echo "<td><a class='bookBtn' href=\"resolveComplaint.php?commentID=$row[commentID]\">Resolve</a></td>";
+          echo "<td>".$row['driverStatus']."</td>";
+          echo "<td>".$row['carType']."</td>";
+          echo "<td>".$row['platNo']."</td>";
+          echo "<td>".$row['colour']."</td>";
+          echo "<td>".$row['year']."</td>";
+          echo "<td><a class='bookBtn' href=\"removeDriver.php?driverID=$row[driverID]\">Remove</a></td>";
           echo "</tr>";
 
       }

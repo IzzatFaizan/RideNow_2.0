@@ -36,12 +36,16 @@
 			}
 			
 			else {
+
 				session_start();
 				$_SESSION['loginUser']= $_POST["driverphone"];
-				
-				header ("Location: http://localhost/RideNow_2.0/acceptRider.php");
-				
-		
+				$result = mysqli_query($conn,"SELECT driverStatus from driver WHERE driverPhone='" . $_POST["driverphone"]."'");
+				$row = mysqli_fetch_assoc($result);
+				if ($row['driverStatus'] != 'Complained')
+					header("Location: http://localhost/RideNow_2.0/acceptRider.php");
+				else {
+						header("Location: http://localhost/RideNow_2.0/driverRemoved.php");
+					}	
 			}
 		}
 	}
