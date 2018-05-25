@@ -167,7 +167,6 @@
   <div class="overlay">
     <div class="container">              
           <div class="row">
-              <div class="row">
 
       <!-- USER PROFILE BLOCK -->
         <div class="col-sm-3 col-lg-3">
@@ -232,7 +231,8 @@
 
         </div>
       </div><!-- /row -->
-          </div>
+          
+          
           
           <!-- SECOND ROW OF BLOCKS -->     
       <div class="row">
